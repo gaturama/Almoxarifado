@@ -1,13 +1,13 @@
 using System.Windows.Forms;
 using Views;
 
-namespace Almo
+namespace Almoxarifado
 {
-    static class Almoxarifado
+    public class Almoxarifado
     {
         public static void Main(string[] args)
         {
-            Almoxarifado.index();
+            almoxarifado.index();
         }
     }
 }
