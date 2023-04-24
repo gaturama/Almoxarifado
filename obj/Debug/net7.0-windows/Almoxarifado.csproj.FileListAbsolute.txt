@@ -3,3 +3,8 @@ C:\Users\Barra Velha\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-window
 C:\Users\Barra Velha\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.AssemblyInfoInputs.cache
 C:\Users\Barra Velha\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.AssemblyInfo.cs
 C:\Users\Barra Velha\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.csproj.CoreCompileInputs.cache
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.csproj.AssemblyReference.cache
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.AssemblyInfoInputs.cache
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.AssemblyInfo.cs
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.csproj.CoreCompileInputs.cache

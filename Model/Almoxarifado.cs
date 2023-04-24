@@ -9,12 +9,14 @@ namespace Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idAlmoxarifado {get; set;}
 
-        [Column("nomeProduto")]
-        public string nomeProduto{get; set;}   
+        [Column("idAlmoxarifado")]
+        public string nome{get; set;}   
 
-        public Almoxarifado(string nomeProduto)
+        [Column("nome")]
+        public Almoxarifado(int idAlmoxarifado, string nome)
         {
-            this.nomeProduto = nomeProduto;
+            this.idAlmoxarifado = idAlmoxarifado;
+            this.nome = nome;
         }
     }
 }

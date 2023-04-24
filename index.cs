@@ -7,7 +7,7 @@ namespace Almoxarifado
     {
         public static void Main(string[] args)
         {
-            almoxarifado.index();
+            Almoxarifado.index();
         }
     }
 }
