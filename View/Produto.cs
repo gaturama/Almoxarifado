@@ -12,7 +12,7 @@ namespace Views
         public Produto()
         {
             this.Text = "Produto";
-            this.Size = new Size(600, 420);
+            this.Size = new Size(500, 400);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
@@ -21,7 +21,7 @@ namespace Views
             this.ShowInTaskbar = false;
 
             list = new ListView();
-            list.Size = new Size(500, 200);
+            list.Size = new Size(400, 250);
             list.Location = new Point(50, 50);
             list.View = View.Details;
             list.Columns.Add("Id");
@@ -38,17 +38,33 @@ namespace Views
 
             Button btAdd = new Button();
             btAdd.Text = "Adicionar";
-            btAdd.Size = new Size(75, 23);
-            btAdd.Location = new Point(50, 170);
+            btAdd.Size = new Size(100, 30);
+            btAdd.Location = new Point(50, 300);
             btAdd.Click += new EventHandler(btAdd_Click);
             this.Controls.Add(btAdd);
 
             Button btEdit = new Button();
             btEdit.Text = "Editar";
-            btEdit.Size = new Size(75, 23);
-            btEdit.Location = new Point(120, 170);
+            btEdit.Size = new Size(100, 30);
+            btEdit.Location = new Point(170, 300);
             btEdit.Click += new EventHandler(btEdit_Click);
             this.Controls.Add(btEdit);
+
+            Button btDelete = new Button();
+            btDelete.Text = "Excluir";
+            btDelete.Size = new Size(100, 30);
+            btDelete.Location = new Point(350, 300);
+            btDelete.Click += new EventHandler(btDelete_Click);
+            this.Controls.Add(btDelete);
+
+            Button btSair = new Button();
+            btSair.Text = "Sair";
+            btSair.Size = new Size(100, 30);
+            btSair.Location = new Point(450, 300);
+            btSair.Click += new EventHandler(btSair_Click);
+            this.Controls.Add(btSair);
+
+            this.ShowDialog();
         }
     }
 }
