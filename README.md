@@ -4,8 +4,8 @@
 
 ### 🛠️ Métodos
 
-- CRUD: CREATE | READ | UPDATE | DELETE
-- MVC: MODEL | VIEW | CONTROLLER
+- **`CRUD`**: CREATE | READ | UPDATE | DELETE
+- **`MVC`**: MODEL | VIEW | CONTROLLER
 - DataBase Connection
 
 ---
