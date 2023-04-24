@@ -1,4 +1,4 @@
-## 📦**`Almoxarifado`**
+## 📦 **`Almoxarifado`**
 
 ---
 
