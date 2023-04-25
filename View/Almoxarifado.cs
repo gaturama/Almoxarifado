@@ -1,16 +1,80 @@
+using System;
+using Models;
+using Controllers;
+
 namespace Views
 {
     public class AlmoxarifadoView : Form
     {
-        ListView list;
-        public static void almoxarifado(){
-        }
-                void RefreshList(){
+        public enum Option { Editar, Deletar}
+
+        public class List : Form{
+            ListView list;
+
+            private void AddToListView(Models.AlmoxarifadoModels almoxarifado){
+                string[] row = {
+                    almoxarifado.idAlmoxarifado.ToString(),
+                    almoxarifado.nome
+                };
+
+                ListViewItem item = new ListViewItem(row);
+                list.Items.Add(item);
+            }
+
+            public void RefreshList(){
                 list.Items.Clear();
-                foreach (Models.AlmoxarifadoModels a in Controllers.AlmoxarifadoController()) {
-                    ListViewItem item = new ListViewItem(a.Nome);
-                    list.Items.Add(item);
-            } 
+
+                List<Models.AlmoxarifadoModels> almoxarifados = Controllers.AlmoxarifadoController.Read();
+
+                foreach(Models.AlmoxarifadoModels almoxarifado in almoxarifados){
+                    AddToListView(almoxarifado);
+                }
+            }
+
+            private void btCad_Click(object sender, EventArgs e){
+                var CadastrarAlmoxarifado = new Views.AlmoxarifadoView();
+                CadastrarAlmoxarifado.Show();
+            }
+
+            private void btEdit_Click(object sender, EventArgs e){
+                try{
+                    Almoxarifado almoxarifado = GetSelectedAlmoxarifado(Option.Editar);
+                    RefreshList();
+                    var EditarAlmoxarifado = new Views.AlmoxarifadoView(almoxarifado);
+                    if(EditarAlmoxarifado.ShowDialog() == DialogResult.OK){
+                        RefreshList();
+                        MessageBox.Show("Almoxarifado editado!");
+                    }
+                }catch(Exception e){
+                    MessageBox.Show(e.Message);
+                }
+            }
+            private void btDelete_Click(object sender, EventArgs e){
+                try{
+                    Almoxarifado almoxarifado = GetSelectedAlmoxarifado(Option.Deletar);
+                    DialogResult result = MessageBox("Deseja deletar este almoxarifado?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                    if(result == DialogResult.Yes){
+                        Controllers.AlmoxarifadoController.Deletar(almoxarifado);
+                        RefreshList();
+                    }
+                }catch(SystemException e){
+                    MessageBox.Show(e.Message);
+                }
+            }
+
+            public Almoxarifado GetSelectedAlmoxarifado(Option option){
+                if(list.SelectedItems.Count > 0){
+                    int selectedAlmoxarifadoId = int.Parse(list.SelectedItems[0].Text);
+                    return Controllers.AlmoxarifadoController.ReadById(selectedAlmoxarifadoId);
+                }
+                else{
+                    throw new System.Exception($"Por favor, selecione o almoxarifado para {(option == Option.Editar ? "editar" : "deletar")}");
+                }
+            }
+
+            private void btSair_Click(object sender, EventArgs e){
+                this.Close();
+            }
         }
 
         public AlmoxarifadoView(){
@@ -36,45 +100,29 @@ namespace Views
             btCad.Text = "Cadastrar";
             btCad.Size = new Size(100, 50);
             btCad.Location = new Point(50, 300);
-            btCad.Click += (sender, e) => {
-                new CadastrarAlmoxarifado();
-                this.RefreshList();
-                this.Show();
-                Produto.almoxarifado();
-            };
+            btCad.Click += new EventHandler(btCad_Click);
+            this.Controls.Add(btCad);    
 
             Button btEdit = new Button();
             btEdit.Text = "Editar";
             btEdit.Size = new Size(100, 50);
             btEdit.Location = new Point(170, 300);
-            btEdit.Click += (sender, e) => {
-                new EditarAlmoxarifado();
-                this.Show();
-            };
+            btEdit.Click += new EventHandler(btEdit_Click);
+            this.Controls.Add(btEdit);
 
             Button btExcluir = new Button();
             btExcluir.Text = "Excluir";
             btExcluir.Size = new Size(100, 50);
             btExcluir.Location = new Point(350, 300);
-            btExcluir.Click += (sender, e) => {
-                ExcluirAlmoxarifado.index();
-                this.Show();
-            }; 
-
+            btExcluir.Click += new EventHandler(btExcluir_Click);
+            this.Controls.Add(btExcluir);
+                
             Button btSair = new Button();
             btSair.Text = "Sair";
             btSair.Size = new Size(100, 30);
             btSair.Location = new Point(530, 300);
-            btSair.Click += (sender, e) => {
-                this.Close();
-            };
-
-            this.Controls.Add(list);
-            this.Controls.Add(btCad);
-            this.Controls.Add(btEdit);
-            this.Controls.Add(btExcluir);
-            this.Controls.Add(btSair);
-            this.ShowDialog();
+            btSair.Click += new EventHandler(btSair_Click);
+            this.Controls.Add(btSair);                
         }    
     }
 }

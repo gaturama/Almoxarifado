@@ -6,8 +6,78 @@ namespace Views
 {
     public class Produto : Form
     {
-        ListView list;
-        public int selectedAlmoxarifadoId = -1;
+        public enum Option { Editar, Deletar}
+
+        public class List : Form{
+            ListView list;
+
+            private void AddToListView(Models.Produto produto){
+                string[] row = {
+                    produto.idProduto.ToString(),
+                    produto.nome,
+                    produto.preco
+                };
+
+                ListViewItem item = new ListViewItem(row);
+                list.Items.Add(item);
+            }
+
+            public void RefreshList(){
+                list.Items.Clear();
+
+                List<Models.Produto> produtos = Controllers.ProdutoController.Read();
+
+                foreach(Models.Produto produto in produtos){
+                    AddToListView(produto);
+                }
+            }
+
+            private void btAdd_Click(object sender, EventArgs e){
+                var CadastrarProduto = new Views.Produto();
+                CadastrarProduto.Show();
+            }
+
+            private void btEdit_Click(object sender, EventArgs e){
+                try{
+                    Produto produto = GetSelectedProduto(Option.Editar);
+                    RefreshList();
+                    var EditarProduto = new Views.Produto(produto);
+                    if(EditarProduto.ShowDialog() == DialogResult.OK){
+                        RefreshList();
+                        MessageBox.Show("Produto editado!");
+                    }
+                }catch(Exception e){
+                    MessageBox.Show(e.Message);
+                }
+            }
+
+            private void btDelete_Click(object sender, EventArgs e){
+                try{
+                    Produto produto = GetSelectedProduto(Option.Deletar);
+                    DialogResult result = MessageBox("Deseja deletar este produto?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                    if(result == DialogResult.Yes){
+                        Controllers.ProdutoController.Deletar(produto);
+                        RefreshList();
+                    }
+                }catch(SystemException e){
+                    MessageBox.Show(e.Message);
+                }
+            }
+
+            public Produto GetSelectedProduto(Option option){
+                if(list.SelectedItems.Count > 0){
+                    int selectedProdutoId = int.Parse(list.SelectedItems[0].Text);
+                    return Controllers.ProdutoController.ReadById(selectedProdutoId);
+                }
+                else{
+                    throw new System.Exception($"Por favor, selecione o produto para {(option == Option.Editar ? "editar" : "deletar")}");
+                }
+            }
+
+            private void btSair_Click(object sender, EventArgs e){
+                this.Close();
+            }
+        }
 
         public Produto()
         {
@@ -27,12 +97,12 @@ namespace Views
             list.Columns.Add("Id");
             list.Columns.Add("Nome");
             list.Columns.Add("Preço");
-            list.Columns[0].Width = 30;
-            list.Columns[1].Width = 80;
-            list.Columns[2].Width = 100;
-            list.FullRowSelect = true;
-            list.SelectedIndexChanged += new EventHandler(list_SelectedIndexChanged);
-            this.Controls.Add(list);
+            // list.Columns[0].Width = 30;
+            // list.Columns[1].Width = 80;
+            // list.Columns[2].Width = 100;
+            // list.FullRowSelect = true;
+            // list.SelectedIndexChanged += new EventHandler(list_SelectedIndexChanged);
+            // this.Controls.Add(list);
 
             RefreshList();
 
@@ -63,8 +133,6 @@ namespace Views
             btSair.Location = new Point(450, 300);
             btSair.Click += new EventHandler(btSair_Click);
             this.Controls.Add(btSair);
-
-            this.ShowDialog();
         }
     }
 }

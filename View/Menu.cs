@@ -48,6 +48,8 @@ namespace Views
             };
 
             menu.Controls.Add(btPrt);
+            menu.Controls.Add(btAlm);
+            menu.Controls.Add(btSd);
             menu.Controls.Add(sair);
             menu.ShowDialog();
         }

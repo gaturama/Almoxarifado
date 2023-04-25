@@ -13,7 +13,7 @@ namespace Views
         ListView list;
 
             private void AddToListView(Models.Saldo saldo){
-                string[] row ={
+                string[] row = {
                     saldo.idSaldo.ToString(),
                     saldo.nome,
                     saldo.almoxarifado,
@@ -56,7 +56,7 @@ namespace Views
             private void btExc_Click(object sender, EventArgs e){
                 try{
                     Saldo saldo = GetSelectedSaldo(Option.Deletar);
-                    DialogResult result = MessageBox.Show("Deseja deletar este carro", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Deseja deletar este carro?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
                         Controllers.SaldoController.Deletar(saldo);
                         RefreshList();
@@ -129,8 +129,6 @@ namespace Views
            btSair.Location = new Point(100, 250);
            btSair.Click += new EventHandler(btSair_Click);
            this.Controls.Add(btSair);
-
-           this.ShowDialog();
        }
     }
 }
