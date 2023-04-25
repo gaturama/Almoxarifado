@@ -38,33 +38,33 @@ namespace Views
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
-                    Almoxarifado almoxarifado = GetSelectedAlmoxarifado(Option.Update);
+                    AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Update);
                     RefreshList();
-                    var UpdateAlmoxarifado = new Views.AlmoxarifadoView(almoxarifado);
+                    var UpdateAlmoxarifado = new Views.AlmoxarifadoView();
                     if(UpdateAlmoxarifado.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Almoxarifado editado!");
                     }
-                }catch(Exception e){
-                    MessageBox.Show(e.Message);
+                }catch(Exception err){
+                    MessageBox.Show(err.Message);
                 }
             }
-            private void btDelete_Click(object sender, EventArgs e){
+            private void btExcluir_Click(object sender, EventArgs e){
                 try{
-                    Almoxarifado almoxarifado = GetSelectedAlmoxarifado(Option.Delete);
+                    AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Delete);
                     DialogResult result = MessageBox("Deseja Delete este almoxarifado?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
                         Controllers.AlmoxarifadoController.Delete(almoxarifado);
                         RefreshList();
                     }
-                }catch(SystemException e){
-                    MessageBox.Show(e.Message);
+                }catch(System.Exception err){
+                    MessageBox.Show(err.Message);
                 }
             }
 
             public AlmoxarifadoModels GetSelectedAlmoxarifado(Option option){
-                if(list.SelectedItems.Count > 0){
-                    int selectedAlmoxarifadoId = int.Parse(list.SelectedItems[0].Text);
+                if(listAlmoxarifado.SelectedItems.Count > 0){
+                    int selectedAlmoxarifadoId = int.Parse(listAlmoxarifado.SelectedItems[0].Text);
                     return Controllers.AlmoxarifadoController.ReadById(selectedAlmoxarifadoId);
                 }
                 else{
