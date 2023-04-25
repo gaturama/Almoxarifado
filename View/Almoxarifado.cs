@@ -39,8 +39,8 @@ namespace Views
                 try{
                     AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Update);
                     RefreshList();
-                    var UpdateAlmoxarifado = new Views.(almoxarifado);
-                    if(UpdateAlmoxarifado.ShowDialog() == DialogResult.OK){
+                    var almoxarifadoView = new Views.AlmoxarifadoView();
+                    if(almoxarifadoView.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Almoxarifado editado!");
                     }
