@@ -31,7 +31,7 @@ namespace Views
             btAlm.Click += (sender, e) => {
                 menu.Hide();
                 new Almoxarifado();
-                menu.Show;
+                menu.Show();
             };
 
             Button btSd = new Button();

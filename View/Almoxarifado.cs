@@ -1,19 +1,19 @@
 namespace Views
 {
-    public class Almoxarifado : Form
+    public class AlmoxarifadoView : Form
     {
         ListView list;
         public static void almoxarifado(){
         }
                 void RefreshList(){
                 list.Items.Clear();
-                foreach (Models.Almoxarifado a in Controllers.Almoxarifado.index()) {
-                    ListViewItem item = news.ListViewItem(a.Nome);
+                foreach (Models.AlmoxarifadoModels a in Controllers.AlmoxarifadoController()) {
+                    ListViewItem item = new.ListViewItem(a.Nome);
                     list.Items.Add(item);
             } 
         }
 
-        public Almoxarifado(){
+        public AlmoxarifadoView(){
             this.Text = "Almoxarifado";
             this.Size = new Size(500, 400);
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -26,7 +26,7 @@ namespace Views
             list = new ListView();
             list.Size = new Size(400, 250);
             list.Location = new Point(50, 50);
-            list.View = Views.Details;
+            list.View = View.Details;
             list.Columns.Add("Id");
             list.Columns.Add("Nome");
 

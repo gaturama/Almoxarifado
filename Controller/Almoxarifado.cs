@@ -1,34 +1,27 @@
+using Models;
 using MyData;
 
-namespace Controllers
-{
-    public class Almoxarifado
-    {
-        public void Create(Almoxarifado almoxarifado)
-        {
-            using(var context = new AlmoxarifadoContext())
-            {
+namespace Controllers{
+    public class AlmoxarifadoController{
+        public void Create(AlmoxarifadoController almoxarifado){
+            using(var context = new Context()){
                 context.Almoxarifados.Add(almoxarifado);
                 context.SaveChanges();
             }
         }
 
-        public static List<Almoxarifado> Read()
-        {
-            using (var context = new AlmoxarifadoContext())
-            {
+        public static List<AlmoxarifadoController> Read(){
+            using (var context = new Context()){
                 return context.Almoxarifados.ToList();
             }
         }
 
-        public static Almoxarifado ReadById(int id)
-        {
-            using (var context = new AlmoxarifadoContext())
-            {
-                var almoxarifado = context.Almoxarifados.Find(id);
+        public static AlmoxarifadoController ReadById(int idAlmoxarifado){
+            using (var context = new Context()){
+                var almoxarifado = context.Almoxarifados.Find(idAlmoxarifado);
                 if (almoxarifado == null)
                 {
-                    throw new Exception("Almoxarifado não encontrado");
+                    throw new ArgumentException("Almoxarifado não encontrado");
                 }
                 else
                 {
@@ -37,19 +30,15 @@ namespace Controllers
             }
         }
 
-        public static void Update(Almoxarifado almoxarifado)
-        {
-            using (var context = new AlmoxarifadoContext())
-            {
+        public static void Update(AlmoxarifadoController almoxarifado){
+            using (var context = new Context()){
                 context.Almoxarifados.Update(almoxarifado);
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(Almoxarifado almoxarifado)
-        {
-            using (var context = new AlmoxarifadoContext())
-            {
+        public static void Delete(AlmoxarifadoController almoxarifado){
+            using (var context = new Context()){
                 context.Almoxarifados.Remove(almoxarifado);
                 context.SaveChanges();
             }
