@@ -1,14 +1,13 @@
-using System;
 using Models;
 using Controllers;
 
 namespace Views
 {
-    public class AlmoxarifadoView : Form
+    public class AlmoxarifadoView
     {
         public enum Option {Update, Delete}
 
-        public class List : Form{
+        public class ListAlmoxarifado : Form{
             ListView listAlmoxarifado;
 
             private void AddToListView(Models.AlmoxarifadoModels almoxarifado){
@@ -32,15 +31,15 @@ namespace Views
             }
 
             private void btCad_Click(object sender, EventArgs e){
-                var CadastrarAlmoxarifado = new Views.AlmoxarifadoView();
-                CadastrarAlmoxarifado.Show();
+                var almoxarifadoController = new Views.AlmoxarifadoController();
+                AlmoxarifadoView.Show();
             }
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
                     AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Update);
                     RefreshList();
-                    var UpdateAlmoxarifado = new Views.AlmoxarifadoView();
+                    var UpdateAlmoxarifado = new Views.(almoxarifado);
                     if(UpdateAlmoxarifado.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Almoxarifado editado!");
@@ -87,14 +86,15 @@ namespace Views
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
 
-            list = new ListView();
-            list.Size = new Size(400, 250);
-            list.Location = new Point(50, 50);
-            list.View = View.Details;
-            list.Columns.Add("Id");
-            list.Columns.Add("Nome");
+            listAlmoxarifado = new ListView();
+            listAlmoxarifado.Size = new Size(400, 250);
+            listAlmoxarifado.Location = new Point(50, 50);
+            listAlmoxarifado.View = View.Details;
+            listAlmoxarifado.Columns.Add("Id");
+            listAlmoxarifado.Columns.Add("Nome");
+            this.Controls.Add(listAlmoxarifado);
 
-            this.RefreshList();
+            RefreshList();
 
             Button btCad = new Button();
             btCad.Text = "Cadastrar";
@@ -122,9 +122,7 @@ namespace Views
             btSair.Size = new Size(100, 30);
             btSair.Location = new Point(530, 300);
             btSair.Click += new EventHandler(btSair_Click);
-            this.Controls.Add(btSair);      
-
-            this.ShowDialog();          
+            this.Controls.Add(btSair);             
         }    
     }
 }

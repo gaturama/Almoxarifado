@@ -1,3 +1,6 @@
+using Models;
+using Controllers;
+
 namespace Views
 {
     public class Menu{
@@ -20,7 +23,7 @@ namespace Views
             btPrt.Location = new Point(100, 100);
             btPrt.Click += (sender, e) => {
                 menu.Hide();
-                new Produto();
+                var listProduto = new ListProduto();
                 menu.Show();
             };
 
@@ -30,7 +33,8 @@ namespace Views
             btAlm.Location = new Point(100, 150);
             btAlm.Click += (sender, e) => {
                 menu.Hide();
-                new Almoxarifado();
+                var listAlmoxarifado = new ListAlmoxarifado();
+                listAlmoxarifado.ShowDialog();
                 menu.Show();
             };
 
@@ -38,6 +42,11 @@ namespace Views
             btSd.Text = "Saldo";
             btSd.Size = new Size(100, 30);
             btSd.Location = new Point(100, 200);
+            btSd.Click += (sender, e) => {
+                menu.Hide();
+                var listSaldo = new ListSaldo();
+                menu.Show();
+            };
 
             Button sair = new Button();
             sair.Text = "Sair";

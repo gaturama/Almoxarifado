@@ -1,4 +1,3 @@
-using System;
 using Models;
 using Controllers;
 
@@ -8,7 +7,7 @@ namespace Views
     {
         public enum Option { Update, Delete}
 
-        public class List : Form{
+        public class ListProduto : Form{
             ListView listProduto;
 
             private void AddToListView(Models.ProdutoModels produto){
@@ -33,15 +32,15 @@ namespace Views
             }
 
             private void btAdd_Click(object sender, EventArgs e){
-                var CadastrarProduto = new Views.Produto();
+                var CadastrarProduto = new Views.ProdutoView();
                 CadastrarProduto.Show();
             }
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
-                    ProdutoController produto = GetSelectedProduto(Option.Update);
+                    ProdutoModels produto = GetSelectedProduto(Option.Update);
                     RefreshList();
-                    var UpdateProduto = new Views.Produto(produto);
+                    var UpdateProduto = new Views.ProdutoView();
                     if(UpdateProduto.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Produto editado!");
@@ -53,20 +52,20 @@ namespace Views
 
             private void btDelete_Click(object sender, EventArgs e){
                 try{
-                    ProdutoController produto = GetSelectedProduto(Option.Delete);
+                    ProdutoModels produto = GetSelectedProduto(Option.Delete);
                     DialogResult result = MessageBox("Deseja deletar este produto?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
                         Controllers.ProdutoController.Delete(produto);
                         RefreshList();
                     }
-                }catch(System.Exception e){
-                    MessageBox.Show(e.Message);
+                }catch(System.Exception err){
+                    MessageBox.Show(err.Message);
                 }
             }
 
-            public ProdutoController GetSelectedProduto(Option option){
-                if(list.SelectedItems.Count > 0){
-                    int selectedProdutoId = int.Parse(list.SelectedItems[0].Text);
+            public ProdutoModels GetSelectedProduto(Option option){
+                if(listProduto.SelectedItems.Count > 0){
+                    int selectedProdutoId = int.Parse(listProduto.SelectedItems[0].Text);
                     return Controllers.ProdutoController.ReadById(selectedProdutoId);
                 }
                 else{
@@ -128,7 +127,6 @@ namespace Views
             btSair.Click += new EventHandler(btSair_Click);
             this.Controls.Add(btSair);
 
-            this.ShowDialog();
         }
     }
 }

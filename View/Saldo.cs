@@ -8,7 +8,7 @@ namespace Views
       
       public enum Option {Update, Delete}
 
-      public class List : Form
+      public class ListSaldo : Form
       {
         ListView listSaldo;
 
@@ -35,40 +35,40 @@ namespace Views
             }
 
             private void btCadt_Click(object sender, EventArgs e){
-                var CadastrarSaldo = new Views.Saldo();
+                var CadastrarSaldo = new Views.SaldoView();
                 CadastrarSaldo.Show();
             }
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
-                    SaldoController saldo = GetSelectedSaldo(Option.Update);
+                    SaldoModels saldo = GetSelectedSaldo(Option.Update);
                     RefreshList();
-                    var UpdateSaldo = new Views.Saldo(saldo);
+                    var UpdateSaldo = new Views.SaldoView();
                     if(UpdateSaldo.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Saldo editado!");
                     }
-                }catch(Exception e){
-                    MessageBox.Show(e.Message);
+                }catch(Exception err){
+                    MessageBox.Show(err.Message);
                 }
             }
 
             private void btExc_Click(object sender, EventArgs e){
                 try{
-                    SaldoController saldo = GetSelectedSaldo(Option.Delete);
+                    SaldoModels saldo = GetSelectedSaldo(Option.Delete);
                     DialogResult result = MessageBox.Show("Deseja Delete este carro?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
                         Controllers.SaldoController.Delete(saldo);
                         RefreshList();
                         }
-                    }catch(System.Exception e){
-                        MessageBox.Show(e.Message);
+                    }catch(System.Exception err){
+                        MessageBox.Show(err.Message);
                     }
                 }
 
-            public SaldoController GetSelectedSaldo(Option option){
-                if(list.SelectedItems.Count > 0){
-                    int selectedSaldoId = int.Parse(list.SelectedItems[0].Text);
+            public SaldoModels GetSelectedSaldo(Option option){
+                if(listSaldo.SelectedItems.Count > 0){
+                    int selectedSaldoId = int.Parse(listSaldo.SelectedItems[0].Text);
                     return Controllers.SaldoController.ReadById(selectedSaldoId);
                 }
                 else{
@@ -130,7 +130,6 @@ namespace Views
            btSair.Click += new EventHandler(btSair_Click);
            this.Controls.Add(btSair);
 
-           this.ShowDialog();
        }
     }
 }
