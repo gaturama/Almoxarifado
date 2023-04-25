@@ -7,7 +7,7 @@
 - Desenvolver uma estrutura de controle de Almoxarifado
 - Criar as entidades: Produto | Almoxarifado | Saldo
 
---
+---
 
 ### 🛠️ Métodos
 
@@ -15,13 +15,13 @@
 - **`MVC:`** MODEL | VIEW | CONTROLLER
 - DataBase Connection
 
---
+---
 
 ### 🖥️ Linguagem de Programação
 
 - OOP C#
 
---
+---
 
 ### 📝 Autor
 
