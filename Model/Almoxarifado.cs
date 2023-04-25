@@ -2,8 +2,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
-    public class Almoxarifado
-    {
+    public class AlmoxarifadoModels{
+
         [Column("idAlmoxarifado")]
         [System.ComponentModel.DataAnnotations.Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,8 +12,7 @@ namespace Models
         [Column("Nome")]
         public string nome{get; set;}   
 
-        public Almoxarifado(int idAlmoxarifado, string nome)
-        {
+        public Almoxarifado(int idAlmoxarifado, string nome){
             this.idAlmoxarifado = idAlmoxarifado;
             this.nome = nome;
         }

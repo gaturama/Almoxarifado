@@ -8,7 +8,7 @@ namespace Views
                 void RefreshList(){
                 list.Items.Clear();
                 foreach (Models.AlmoxarifadoModels a in Controllers.AlmoxarifadoController()) {
-                    ListViewItem item = new.ListViewItem(a.Nome);
+                    ListViewItem item = new ListViewItem(a.Nome);
                     list.Items.Add(item);
             } 
         }
