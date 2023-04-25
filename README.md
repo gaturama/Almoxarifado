@@ -18,4 +18,4 @@
 
 ### 📝 Autor
 
-- Gabriel 
+- Gabriel Sousa de Oliveira
