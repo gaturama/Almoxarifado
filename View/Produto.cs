@@ -6,7 +6,7 @@ namespace Views
 {
     public class Produto : Form
     {
-        public enum Option { Editar, Deletar}
+        public enum Option { Update, Delete}
 
         public class List : Form{
             ListView list;
@@ -39,10 +39,10 @@ namespace Views
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
-                    Produto produto = GetSelectedProduto(Option.Editar);
+                    Produto produto = GetSelectedProduto(Option.Update);
                     RefreshList();
-                    var EditarProduto = new Views.Produto(produto);
-                    if(EditarProduto.ShowDialog() == DialogResult.OK){
+                    var UpdateProduto = new Views.Produto(produto);
+                    if(UpdateProduto.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Produto editado!");
                     }
@@ -53,10 +53,10 @@ namespace Views
 
             private void btDelete_Click(object sender, EventArgs e){
                 try{
-                    Produto produto = GetSelectedProduto(Option.Deletar);
+                    Produto produto = GetSelectedProduto(Option.Delete);
                     DialogResult result = MessageBox("Deseja deletar este produto?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
-                        Controllers.ProdutoController.Deletar(produto);
+                        Controllers.ProdutoController.Delete(produto);
                         RefreshList();
                     }
                 }catch(SystemException e){
@@ -70,7 +70,7 @@ namespace Views
                     return Controllers.ProdutoController.ReadById(selectedProdutoId);
                 }
                 else{
-                    throw new System.Exception($"Por favor, selecione o produto para {(option == Option.Editar ? "editar" : "deletar")}");
+                    throw new System.Exception($"Por favor, selecione o produto para {(option == Option.Update ? "Update" : "deletar")}");
                 }
             }
 
@@ -114,7 +114,7 @@ namespace Views
             this.Controls.Add(btAdd);
 
             Button btEdit = new Button();
-            btEdit.Text = "Editar";
+            btEdit.Text = "Update";
             btEdit.Size = new Size(100, 30);
             btEdit.Location = new Point(170, 300);
             btEdit.Click += new EventHandler(btEdit_Click);

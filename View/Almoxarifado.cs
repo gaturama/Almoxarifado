@@ -6,10 +6,10 @@ namespace Views
 {
     public class AlmoxarifadoView : Form
     {
-        public enum Option { Editar, Deletar}
+        public enum Option {Update, Delete}
 
         public class List : Form{
-            ListView list;
+            ListView listAlmoxarifado;
 
             private void AddToListView(Models.AlmoxarifadoModels almoxarifado){
                 string[] row = {
@@ -18,7 +18,7 @@ namespace Views
                 };
 
                 ListViewItem item = new ListViewItem(row);
-                list.Items.Add(item);
+                listAlmoxarifado.Items.Add(item);
             }
 
             public void RefreshList(){
@@ -38,10 +38,10 @@ namespace Views
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
-                    Almoxarifado almoxarifado = GetSelectedAlmoxarifado(Option.Editar);
+                    Almoxarifado almoxarifado = GetSelectedAlmoxarifado(Option.Update);
                     RefreshList();
-                    var EditarAlmoxarifado = new Views.AlmoxarifadoView(almoxarifado);
-                    if(EditarAlmoxarifado.ShowDialog() == DialogResult.OK){
+                    var UpdateAlmoxarifado = new Views.AlmoxarifadoView(almoxarifado);
+                    if(UpdateAlmoxarifado.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Almoxarifado editado!");
                     }
@@ -51,10 +51,10 @@ namespace Views
             }
             private void btDelete_Click(object sender, EventArgs e){
                 try{
-                    Almoxarifado almoxarifado = GetSelectedAlmoxarifado(Option.Deletar);
-                    DialogResult result = MessageBox("Deseja deletar este almoxarifado?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                    Almoxarifado almoxarifado = GetSelectedAlmoxarifado(Option.Delete);
+                    DialogResult result = MessageBox("Deseja Delete este almoxarifado?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
-                        Controllers.AlmoxarifadoController.Deletar(almoxarifado);
+                        Controllers.AlmoxarifadoController.Delete(almoxarifado);
                         RefreshList();
                     }
                 }catch(SystemException e){
@@ -62,13 +62,13 @@ namespace Views
                 }
             }
 
-            public Almoxarifado GetSelectedAlmoxarifado(Option option){
+            public AlmoxarifadoModels GetSelectedAlmoxarifado(Option option){
                 if(list.SelectedItems.Count > 0){
                     int selectedAlmoxarifadoId = int.Parse(list.SelectedItems[0].Text);
                     return Controllers.AlmoxarifadoController.ReadById(selectedAlmoxarifadoId);
                 }
                 else{
-                    throw new System.Exception($"Por favor, selecione o almoxarifado para {(option == Option.Editar ? "editar" : "deletar")}");
+                    throw new System.Exception($"Por favor, selecione o almoxarifado para {(option == Option.Update ? "Update" : "Delete")}");
                 }
             }
 
@@ -104,7 +104,7 @@ namespace Views
             this.Controls.Add(btCad);    
 
             Button btEdit = new Button();
-            btEdit.Text = "Editar";
+            btEdit.Text = "Update";
             btEdit.Size = new Size(100, 50);
             btEdit.Location = new Point(170, 300);
             btEdit.Click += new EventHandler(btEdit_Click);

@@ -6,7 +6,7 @@ namespace Views
     public class Saldo : Form
     {
       
-      public enum Option { Editar, Deletar }
+      public enum Option {Update, Delete}
 
       public class List : Form
       {
@@ -41,10 +41,10 @@ namespace Views
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
-                    Saldo saldo = GetSelectedSaldo(Option.Editar);
+                    Saldo saldo = GetSelectedSaldo(Option.Update);
                     RefreshList();
-                    var EditarSaldo = new Views.Saldo(saldo);
-                    if(EditarSaldo.ShowDialog() == DialogResult.OK){
+                    var UpdateSaldo = new Views.Saldo(saldo);
+                    if(UpdateSaldo.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Saldo editado!");
                     }
@@ -55,10 +55,10 @@ namespace Views
 
             private void btExc_Click(object sender, EventArgs e){
                 try{
-                    Saldo saldo = GetSelectedSaldo(Option.Deletar);
-                    DialogResult result = MessageBox.Show("Deseja deletar este carro?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                    Saldo saldo = GetSelectedSaldo(Option.Delete);
+                    DialogResult result = MessageBox.Show("Deseja Delete este carro?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
-                        Controllers.SaldoController.Deletar(saldo);
+                        Controllers.SaldoController.Delete(saldo);
                         RefreshList();
                         }
                     }catch(System.Exception e){
@@ -72,7 +72,7 @@ namespace Views
                     return Controllers.SaldoController.ReadById(selectedSaldoId);
                 }
                 else{
-                    throw new System.Exception($"Por favor, selecione o saldo para {(option == Option.Editar ? "editar" : "deletar")}");
+                    throw new System.Exception($"Por favor, selecione o saldo para {(option == Option.Update ? "Update" : "Delete")}");
                 }
             }
 
@@ -110,7 +110,7 @@ namespace Views
            this.Controls.Add(btCadt);
 
            Button btEdit = new Button();
-           btEdit.Text = "Editar";
+           btEdit.Text = "Update";
            btEdit.Size = new Size(100, 30);
            btEdit.Location = new Point(100, 150);
            btEdit.Click += new EventHandler(btEdit_Click);
