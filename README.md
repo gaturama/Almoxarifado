@@ -17,7 +17,7 @@
 
 ---
 
-### 🖥️🖱️ Linguagem de Programação
+### 🖥️ Linguagem de Programação
 
 - OOP C#
 
