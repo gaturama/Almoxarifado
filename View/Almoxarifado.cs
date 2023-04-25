@@ -22,7 +22,7 @@ namespace Views
             }
 
             public void RefreshList(){
-                list.Items.Clear();
+                listAlmoxarifado.Items.Clear();
 
                 List<Models.AlmoxarifadoModels> almoxarifados = Controllers.AlmoxarifadoController.Read();
 
@@ -122,7 +122,9 @@ namespace Views
             btSair.Size = new Size(100, 30);
             btSair.Location = new Point(530, 300);
             btSair.Click += new EventHandler(btSair_Click);
-            this.Controls.Add(btSair);                
+            this.Controls.Add(btSair);      
+
+            this.ShowDialog();          
         }    
     }
 }

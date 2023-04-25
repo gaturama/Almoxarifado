@@ -3,16 +3,16 @@ using Controllers;
 
 namespace Views
 {
-    public class Saldo : Form
+    public class SaldoView : Form
     {
       
       public enum Option {Update, Delete}
 
       public class List : Form
       {
-        ListView list;
+        ListView listSaldo;
 
-            private void AddToListView(Models.Saldo saldo){
+            private void AddToListView(Models.SaldoModels saldo){
                 string[] row = {
                     saldo.idSaldo.ToString(),
                     saldo.nome,
@@ -21,15 +21,15 @@ namespace Views
                 };
 
                 ListViewItem item = new ListViewItem(row);
-                list.Items.Add(item);
+                listSaldo.Items.Add(item);
             }
 
             public void RefreshList(){
-                list.Items.Clear();
+                listSaldo.Items.Clear();
 
-                List<Models.Saldo> saldos = Controllers.SaldoController.Read();
+                List<Models.SaldoModels> saldos = Controllers.SaldoController.Read();
 
-                foreach(Models.Saldo saldo in saldos){
+                foreach(Models.SaldoModels saldo in saldos){
                     AddToListView(saldo);
                 }
             }
@@ -41,7 +41,7 @@ namespace Views
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
-                    Saldo saldo = GetSelectedSaldo(Option.Update);
+                    SaldoController saldo = GetSelectedSaldo(Option.Update);
                     RefreshList();
                     var UpdateSaldo = new Views.Saldo(saldo);
                     if(UpdateSaldo.ShowDialog() == DialogResult.OK){
@@ -55,7 +55,7 @@ namespace Views
 
             private void btExc_Click(object sender, EventArgs e){
                 try{
-                    Saldo saldo = GetSelectedSaldo(Option.Delete);
+                    SaldoController saldo = GetSelectedSaldo(Option.Delete);
                     DialogResult result = MessageBox.Show("Deseja Delete este carro?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
                         Controllers.SaldoController.Delete(saldo);
@@ -66,7 +66,7 @@ namespace Views
                     }
                 }
 
-            public Saldo GetSelectedSaldo(Option option){
+            public SaldoController GetSelectedSaldo(Option option){
                 if(list.SelectedItems.Count > 0){
                     int selectedSaldoId = int.Parse(list.SelectedItems[0].Text);
                     return Controllers.SaldoController.ReadById(selectedSaldoId);
@@ -81,7 +81,7 @@ namespace Views
             }      
       }
       
-       public Saldo(){
+       public SaldoView(){
            this.Text = "Saldo";
            this.Size = new Size(300, 300);
            this.StartPosition = FormStartPosition.CenterScreen;
@@ -129,6 +129,8 @@ namespace Views
            btSair.Location = new Point(100, 250);
            btSair.Click += new EventHandler(btSair_Click);
            this.Controls.Add(btSair);
+
+           this.ShowDialog();
        }
     }
 }

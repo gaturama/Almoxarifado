@@ -4,14 +4,14 @@ using Controllers;
 
 namespace Views
 {
-    public class Produto : Form
+    public class ProdutoView : Form
     {
         public enum Option { Update, Delete}
 
         public class List : Form{
-            ListView list;
+            ListView listProduto;
 
-            private void AddToListView(Models.Produto produto){
+            private void AddToListView(Models.ProdutoModels produto){
                 string[] row = {
                     produto.idProduto.ToString(),
                     produto.nome,
@@ -19,15 +19,15 @@ namespace Views
                 };
 
                 ListViewItem item = new ListViewItem(row);
-                list.Items.Add(item);
+                listProduto.Items.Add(item);
             }
 
             public void RefreshList(){
-                list.Items.Clear();
+                listProduto.Items.Clear();
 
-                List<Models.Produto> produtos = Controllers.ProdutoController.Read();
+                List<Models.ProdutoModels> produtos = Controllers.ProdutoController.Read();
 
-                foreach(Models.Produto produto in produtos){
+                foreach(Models.ProdutoModels produto in produtos){
                     AddToListView(produto);
                 }
             }
@@ -39,7 +39,7 @@ namespace Views
 
             private void btEdit_Click(object sender, EventArgs e){
                 try{
-                    Produto produto = GetSelectedProduto(Option.Update);
+                    ProdutoController produto = GetSelectedProduto(Option.Update);
                     RefreshList();
                     var UpdateProduto = new Views.Produto(produto);
                     if(UpdateProduto.ShowDialog() == DialogResult.OK){
@@ -53,18 +53,18 @@ namespace Views
 
             private void btDelete_Click(object sender, EventArgs e){
                 try{
-                    Produto produto = GetSelectedProduto(Option.Delete);
+                    ProdutoController produto = GetSelectedProduto(Option.Delete);
                     DialogResult result = MessageBox("Deseja deletar este produto?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
                         Controllers.ProdutoController.Delete(produto);
                         RefreshList();
                     }
-                }catch(SystemException e){
+                }catch(System.Exception e){
                     MessageBox.Show(e.Message);
                 }
             }
 
-            public Produto GetSelectedProduto(Option option){
+            public ProdutoController GetSelectedProduto(Option option){
                 if(list.SelectedItems.Count > 0){
                     int selectedProdutoId = int.Parse(list.SelectedItems[0].Text);
                     return Controllers.ProdutoController.ReadById(selectedProdutoId);
@@ -79,7 +79,7 @@ namespace Views
             }
         }
 
-        public Produto()
+        public ProdutoView()
         {
             this.Text = "Produto";
             this.Size = new Size(500, 400);
@@ -97,13 +97,7 @@ namespace Views
             list.Columns.Add("Id");
             list.Columns.Add("Nome");
             list.Columns.Add("Preço");
-            // list.Columns[0].Width = 30;
-            // list.Columns[1].Width = 80;
-            // list.Columns[2].Width = 100;
-            // list.FullRowSelect = true;
-            // list.SelectedIndexChanged += new EventHandler(list_SelectedIndexChanged);
-            // this.Controls.Add(list);
-
+           
             RefreshList();
 
             Button btAdd = new Button();
@@ -133,6 +127,8 @@ namespace Views
             btSair.Location = new Point(450, 300);
             btSair.Click += new EventHandler(btSair_Click);
             this.Controls.Add(btSair);
+
+            this.ShowDialog();
         }
     }
 }
