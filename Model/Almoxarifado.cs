@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
-    public class AlmoxarifadoModels
+    public class Almoxarifado
     {
         [Column("idAlmoxarifado")]
         [System.ComponentModel.DataAnnotations.Key]
@@ -12,7 +12,7 @@ namespace Models
         [Column("Nome")]
         public string nome{get; set;}   
 
-        public AlmoxarifadoModels(int idAlmoxarifado, string nome)
+        public Almoxarifado(int idAlmoxarifado, string nome)
         {
             this.idAlmoxarifado = idAlmoxarifado;
             this.nome = nome;
