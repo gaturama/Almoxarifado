@@ -31,8 +31,8 @@ namespace Views
             }
 
             private void btCad_Click(object sender, EventArgs e){
-                var almoxarifadoController = new Views.AlmoxarifadoController();
-                AlmoxarifadoView.Show();
+                var almoxarifadoCreate = new Views.AlmoxarifadoCreate ();
+                almoxarifadoCreate.Show();
             }
 
             private void btEdit_Click(object sender, EventArgs e){
