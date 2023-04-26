@@ -53,7 +53,7 @@ namespace Views
             private void btDelete_Click(object sender, EventArgs e){
                 try{
                     ProdutoModels produto = GetSelectedProduto(Option.Delete);
-                    DialogResult result = MessageBox("Deseja deletar este produto?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Deseja deletar este produto?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
                         Controllers.ProdutoController.Delete(produto);
                         RefreshList();
@@ -89,13 +89,13 @@ namespace Views
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
 
-            list = new ListView();
-            list.Size = new Size(400, 250);
-            list.Location = new Point(50, 50);
-            list.View = View.Details;
-            list.Columns.Add("Id");
-            list.Columns.Add("Nome");
-            list.Columns.Add("Preço");
+            lisProduto = new ListView();
+            listProduto.Size = new Size(400, 250);
+            listProduto.Location = new Point(50, 50);
+            listProduto.View = View.Details;
+            listProduto.Columns.Add("Id");
+            listProduto.Columns.Add("Nome");
+            listProduto.Columns.Add("Preço");
            
             RefreshList();
 
@@ -127,6 +127,11 @@ namespace Views
             btSair.Click += new EventHandler(btSair_Click);
             this.Controls.Add(btSair);
 
+        }
+
+        private void RefreshList()
+        {
+            throw new NotImplementedException();
         }
     }
 }

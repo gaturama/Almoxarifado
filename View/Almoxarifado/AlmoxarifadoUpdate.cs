@@ -1,19 +1,20 @@
 using Models;
 using Controllers;
 using System;
+using static Views.AlmoxarifadoView;
 
 namespace Views{
 
     public class AlmoxarifadoUpdate : Form{
 
-        private Label lblNome;
-        private TextBox txtNome;
-        private Button btCad;
+        public Label lblNome;
+        public TextBox txtNome;
+        public Button btCad;
 
-        private AlmoxarifadoModels almoxarifado;
+        public AlmoxarifadoModels almoxarifado;
         
                 
-        private void btnEdit_Click(object sender, EventArgs e){
+        private void btEdit_Click(object sender, EventArgs e){
 
             AlmoxarifadoModels almoxarifadoToEdit = this.almoxarifado;
             almoxarifadoToEdit.nome = this.txtNome.Text;
@@ -21,13 +22,13 @@ namespace Views{
             AlmoxarifadoController.Update(almoxarifadoToEdit);
             MessageBox.Show("Almoxarifado foi modificado com sucesso!");
 
-            AlmoxarifadoView AlmoxarifadoList = Application.OpenForms.OfType<AlmoxarifadoView>().FirstOrDefault();
-            if (AlmoxarifadoList != null)
+            ListAlmoxarifado listAlmoxarifado = Application.OpenForms.OfType<ListAlmoxarifado>().FirstOrDefault();
+            if (almoxarifado != null)
             {
-                AlmoxarifadoList.RefreshList();
+                almoxarifado.RefreshList();
             }
             this.Close();            
-        } 
+        }
 
         public AlmoxarifadoUpdate(AlmoxarifadoModels almoxarifado){
 
@@ -44,7 +45,7 @@ namespace Views{
             this.btCad.Text = "Cadastrar";
             this.btCad.Location = new System.Drawing.Point(80, 360);
             this.btCad.Size = new System.Drawing.Size(150, 35);
-            this.btCad.Click += new EventHandler(this.btnEdit_Click);
+            this.btCad.Click += new EventHandler(this.btEdit_Click);
 
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.txtNome);

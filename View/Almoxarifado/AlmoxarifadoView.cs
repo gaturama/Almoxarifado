@@ -3,8 +3,7 @@ using Controllers;
 
 namespace Views
 {
-    public class AlmoxarifadoView
-    {
+        public class AlmoxarifadoView{
         public enum Option {Update, Delete}
 
         public class ListAlmoxarifado : Form{
@@ -39,7 +38,7 @@ namespace Views
                 try{
                     AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Update);
                     RefreshList();
-                    var almoxarifadoView = new Views.AlmoxarifadoView();
+                    var almoxarifadoView = new Views.AlmoxarifadoCreate();
                     if(almoxarifadoView.ShowDialog() == DialogResult.OK){
                         RefreshList();
                         MessageBox.Show("Almoxarifado editado!");
@@ -51,13 +50,18 @@ namespace Views
             private void btExcluir_Click(object sender, EventArgs e){
                 try{
                     AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Delete);
-                    DialogResult result = MessageBox("Deseja Delete este almoxarifado?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Deseja Delete este almoxarifado?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes){
                         Controllers.AlmoxarifadoController.Delete(almoxarifado);
                         RefreshList();
                     }
                 }catch(System.Exception err){
-                    MessageBox.Show(err.Message);
+                    if(err.InnerException != null){
+                        MessageBox.Show(err.InnerException.Message);
+                    }
+                    else{
+                        MessageBox.Show(err.Message);
+                    }
                 }
             }
 
