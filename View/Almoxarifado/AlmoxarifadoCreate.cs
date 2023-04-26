@@ -1,6 +1,6 @@
 using Models;
 using Controllers;
-using static Views.ProdutoView;
+using static Views.AlmoxarifadoView;
 
 namespace Views{
 
@@ -28,11 +28,11 @@ namespace Views{
             ClearForm();
         }
 
-        ListProduto listProduto = Application.OpenForms.OfType<ListProduto>().FirstOrDefault();
-        if(listProduto!= null){
-            listProduto.RefreshList();
+        ListAlmoxarifado listAlmoxarifado = Application.OpenForms.OfType<ListAlmoxarifado>().FirstOrDefault();
+        if(listAlmoxarifado!= null){
+            listAlmoxarifado.RefreshList();
         }
-        this.Close();
+            this.Close();
         }
 
         private void ClearForm(){

@@ -91,14 +91,14 @@ namespace Views
            this.ShowIcon = false;
            this.ShowInTaskbar = false;
 
-           list = new ListView();
-           list.Size = new Size(300, 150);
-           list.Location = new Point(100, 100);
-           list.View = View.Details;
-           list.Columns.Add("Id");
-           list.Columns.Add("Nome");
-           list.Columns.Add("Almoxarifado");
-           list.Columns.Add("Quantidade");
+           listSaldo = new ListView();
+           listSaldo.Size = new Size(300, 150);
+           listSaldo.Location = new Point(100, 100);
+           listSaldo.View = View.Details;
+           listSaldo.Columns.Add("Id");
+           listSaldo.Columns.Add("Nome");
+           listSaldo.Columns.Add("Almoxarifado");
+           listSaldo.Columns.Add("Quantidade");
 
            this.RefreshList();
         
@@ -131,5 +131,10 @@ namespace Views
            this.Controls.Add(btSair);
 
        }
+
+        private void RefreshList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
