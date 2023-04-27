@@ -3,7 +3,7 @@ using Controllers;
 
 namespace Views{
 
-    public enum Option {Update, Delete}
+    public enum Op {Update, Delete}
 
     public class ListSaldo : Form{
 
