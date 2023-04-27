@@ -24,7 +24,7 @@ USE `almoxarifado` ;
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `almoxarifado`.`Produto` (
-  `idProduto` INT NOT NULL,
+  `idProduto` INT NOT NULL, AUTO INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `preco` FLOAT NOT NULL,
   PRIMARY KEY (`idProduto`))
@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `almoxarifado`.`Almoxarifado` (
-  `idAlmoxarifado` INT NOT NULL,
+  `idAlmoxarifado` INT NOT NULL, AUTO INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idAlmoxarifado`))
 ENGINE = InnoDB;
@@ -45,7 +45,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `almoxarifado`.`Saldo` (
-  `idSaldo` INT NOT NULL,
+  `idSaldo` INT NOT NULL, AUTO INCREMENT,
   `Quantidade` INT NOT NULL,
   `Produto_idProduto` INT NOT NULL,
   `Almoxarifado_idAlmoxarifado` INT NOT NULL,
