@@ -9,7 +9,7 @@ namespace Views{
 
         ListView listSaldo;
 
-        private void AddLIstView(Models.SaldoModels saldo){
+        private void AddListView(Models.SaldoModels saldo){
 
             string[]row = {
 
@@ -30,7 +30,7 @@ namespace Views{
 
             foreach (Models.SaldoModels saldo in list)
             {
-                AddLIstView(saldo);
+                AddListView(saldo);
             }
         }
 
@@ -49,7 +49,7 @@ namespace Views{
                 if(SaldoUpdateView.ShowDialog() == DialogResult.OK)
                 {
                     RefreshList();
-                    MessageBox.Show("Carro editado com sucesso");
+                    MessageBox.Show("Saldo editado com sucesso");
                 }
             }
             catch(Exception err)
@@ -61,7 +61,7 @@ namespace Views{
         private void btDelete_Click(object sender, EventArgs e){
             try{
                 SaldoModels saldo = GetSelectedSaldo(Option.Delete);
-                DialogResult result = MessageBox.Show("Deseja mesmo deletar esse carro?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Deseja mesmo deletar esse Saldo?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     Controllers.SaldoController.Delete(saldo);
@@ -90,7 +90,7 @@ namespace Views{
             }
             else{
 
-                throw new Exception($"Selecione um carro para {(option == Option.Update ? "editar" : "deletar")}");
+                throw new Exception($"Selecione um Saldo para {(option == Option.Update ? "editar" : "deletar")}");
             }
         }
 
