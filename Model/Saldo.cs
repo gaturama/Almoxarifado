@@ -19,9 +19,8 @@ namespace Models
         [Column("Quantidade")]
         public string qtd { get; set; }
 
-        public SaldoModels(int idSaldo, string nome, string almoxarifado, string qtd)
+        public SaldoModels(string nome, string almoxarifado, string qtd)
         {
-            this.idSaldo = idSaldo;
             this.nome = nome;
             this.almoxarifado = almoxarifado;
             this.qtd = qtd;

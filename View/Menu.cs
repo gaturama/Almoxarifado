@@ -1,5 +1,6 @@
-using Models;
-using Controllers;
+using static Views.ProdutoView;
+using static Views.AlmoxarifadoView;
+using static Views.SaldoView;
 
 namespace Views
 {
