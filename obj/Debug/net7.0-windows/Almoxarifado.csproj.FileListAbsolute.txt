@@ -49,3 +49,44 @@ C:\Users\Barra Velha\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-window
 C:\Users\Barra Velha\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.pdb
 C:\Users\Barra Velha\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.genruntimeconfig.cache
 C:\Users\Barra Velha\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\ref\Almoxarifado.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Almoxarifado.exe
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Almoxarifado.deps.json
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Almoxarifado.runtimeconfig.json
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Almoxarifado.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Almoxarifado.pdb
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\BouncyCastle.Crypto.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Google.Protobuf.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Humanizer.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\K4os.Compression.LZ4.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\K4os.Hash.xxHash.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Mono.TextTemplating.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\MySql.Data.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Ubiety.Dns.Core.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Zstandard.Net.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\MySql.Data.EntityFrameworkCore.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\MySqlConnector.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\Renci.SshNet.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\SshNet.Security.Cryptography.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\bin\Debug\net7.0-windows\System.Xml.XPath.XmlDocument.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.csproj.CopyComplete
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\refint\Almoxarifado.dll
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.pdb
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\Almoxarifado.genruntimeconfig.cache
+C:\Users\gabriel.oliveira20\Documents\Almoxarifado\Almoxarifado\obj\Debug\net7.0-windows\ref\Almoxarifado.dll
