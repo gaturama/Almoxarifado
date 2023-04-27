@@ -40,7 +40,7 @@ namespace Views{
                 }
 
                 ListSaldo SaldoList = Application.OpenForms.OfType<ListSaldo>().FirstOrDefault();
-                if (SaldoList!= null)
+                if (SaldoList != null)
                 {
                     SaldoList.RefreshList();
                 }

@@ -1,7 +1,3 @@
-using static Views.ProdutoView;
-using static Views.AlmoxarifadoView;
-using static Views.SaldoView;
-
 namespace Views
 {
     public class Menu{
