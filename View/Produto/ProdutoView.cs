@@ -36,7 +36,7 @@ namespace Views{
         private void btCadt_Click(object sender, EventArgs e){
 
                 var ProdutoCreate = new Views.ProdutoCreate();
-                ProdutoCreate();
+                //ProdutoCreate();
         }
 
         private void btUpdate_Click(object sender, EventArgs e){
@@ -44,12 +44,12 @@ namespace Views{
 
                 ProdutoModels produto = GetSelectedProduto(Option.Update);
                 RefreshList();
-                var ProdutoUpdateView = new View.ProdutoUpdate(produto);
-                if(ProdutoUpdateView.ShowDialog() == DialogResult.OK)
-                {
-                    RefreshList();
-                    MessageBox.Show("Produto editado com sucesso");
-                }
+                // var ProdutoUpdateView = new View.ProdutoUpdate(produto);
+                // if(ProdutoUpdateView.ShowDialog() == DialogResult.OK)
+                // {
+                //     RefreshList();
+                //     MessageBox.Show("Produto editado com sucesso");
+                // }
             }
             catch(Exception err)
             {

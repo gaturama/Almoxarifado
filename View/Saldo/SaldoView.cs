@@ -45,12 +45,12 @@ namespace Views{
 
                 SaldoModels saldo = GetSelectedSaldo(Option.Update);
                 RefreshList();
-                var SaldoUpdateView = new View.SaldoUpdate(saldo);
-                if(SaldoUpdateView.ShowDialog() == DialogResult.OK)
-                {
-                    RefreshList();
-                    MessageBox.Show("Saldo editado com sucesso");
-                }
+                //var SaldoUpdateView = new View.SaldoUpdate(saldo);
+                // if(SaldoUpdateView.ShowDialog() == DialogResult.OK)
+                // {
+                //     RefreshList();
+                //     MessageBox.Show("Saldo editado com sucesso");
+                // }
             }
             catch(Exception err)
             {

@@ -27,7 +27,7 @@ namespace Views{
                 );
 
                 ProdutoController produtoController = new ProdutoController();
-                produtoController.Create(produto);
+                //produtoController.Create(produto);
 
                 MessageBox.Show("Produto cadastrado com sucesso");
                 ClearForm();

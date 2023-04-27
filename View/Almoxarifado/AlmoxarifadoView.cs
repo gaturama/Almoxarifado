@@ -43,12 +43,12 @@ namespace Views{
 
                 AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Update);
                 RefreshList();
-                var AlmoxarifadoUpdateView = new View.AlmoxarifadoUpdate(almoxarifado);
-                if(AlmoxarifadoUpdateView.ShowDialog() == DialogResult.OK)
-                {
-                    RefreshList();
-                    MessageBox.Show("almoxarifado editado com sucesso");
-                }
+                // var AlmoxarifadoUpdateView = new View.AlmoxarifadoUpdate(almoxarifado);
+                // if(AlmoxarifadoUpdateView.ShowDialog() == DialogResult.OK)
+                // {
+                //     RefreshList();
+                //     MessageBox.Show("almoxarifado editado com sucesso");
+                // }
             }
             catch(Exception err)
             {

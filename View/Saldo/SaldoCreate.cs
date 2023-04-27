@@ -31,7 +31,7 @@ namespace Views{
                 );
 
                 SaldoController saldoController = new SaldoController();
-                saldoController.Create(saldo);
+                //saldoController.Create(saldo);
 
                 MessageBox.Show("Saldo cadastrado com sucesso");
                 ClearForm();
