@@ -20,9 +20,3 @@
 ### 🖥️ Linguagem de Programação
 
 - OOP C#
-
----
-
-### 📝 Autor
-
-- Gabriel Sousa de Oliveira
