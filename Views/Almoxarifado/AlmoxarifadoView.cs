@@ -96,7 +96,7 @@ namespace Views{
 
         public ListAlmoxarifado()
         {
-            this.Text = "Saldos";
+            this.Text = "Almoxarifados";
             this.Size = new Size(800, 450);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;

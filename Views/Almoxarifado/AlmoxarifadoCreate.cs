@@ -65,7 +65,7 @@ namespace Views{
             this.btCadt = new Button();
             this.btCadt.Text = "Cadastrar";
             this.btCadt.Location = new Point(10, 130);
-            this.btCadt.Size = new Size(50, 20);
+            this.btCadt.Size = new Size(100, 20);
             this.btCadt.Click += btCadt_Click;
 
             this.Controls.Add(this.lblNome);

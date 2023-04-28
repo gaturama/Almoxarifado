@@ -13,7 +13,7 @@ namespace MyData
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "server=localhost;database=almoxarifado;user=root;";
+            var connectionString = "server=localhost;database=almoxarifado;user=root;password=gabriel081234.";
             optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
     }    

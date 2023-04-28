@@ -56,3 +56,6 @@ ADD quantidade INT NOT NULL;
 ALTER TABLE almoxarifado DROP COLUMN quantidade;
 ALTER TABLE saldo DROP COLUMN nome;
  
+ALTER TABLE produto RENAME TO produtos;
+ALTER TABLE almoxarifado RENAME TO almoxarifados;
+ALTER TABLE saldo RENAME TO saldos;
