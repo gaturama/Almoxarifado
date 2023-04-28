@@ -5,50 +5,53 @@ namespace Views{
 
     public enum Option {Update, Delete}
 
-    public class ListAlmoxarifado : Form{
+    public class ListSaldo : Form{
 
-        ListView listAlmoxarifado;
+        ListView listSaldo;
 
-        private void AddListView(Models.AlmoxarifadoModels almoxarifado){
+        private void AddListView(Models.SaldoModels saldo){
 
             string[]row = {
 
-                almoxarifado.nome
+                saldo.idProduto.ToString(),
+                saldo.idAlmoxarifado.ToString(),
+                saldo.qtd.ToString()
             };
 
             ListViewItem item = new ListViewItem(row);
-            listAlmoxarifado.Items.Add(item);
+            listSaldo.Items.Add(item);
         }
 
         public void RefreshList()
         {
-            listAlmoxarifado.Items.Clear();
+            listSaldo.Items.Clear();
 
-            List<Models.AlmoxarifadoModels> list = Controllers.AlmoxarifadoController.Read();
+            List<Models.SaldoModels> list = Controllers.SaldoController.Read();
 
-            foreach (Models.AlmoxarifadoModels almoxarifado in list)
+            foreach (Models.SaldoModels saldo in list)
             {
-                AddListView(almoxarifado);
+                AddListView(saldo);
             }
         }
 
         private void btCadt_Click(object sender, EventArgs e){
 
-            var AlmoxarifadoCreate = new Views.AlmoxarifadoCreate();
-            AlmoxarifadoCreate.Show();
+            var SaldoCreate = new Views.SaldoCreate();
+            SaldoCreate.Show();
         }
 
         private void btUpdate_Click(object sender, EventArgs e){
             try{
 
-                AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Update);
+                SaldoModels saldo = GetSelectedSaldo(Option.Update);
                 RefreshList();
-                // var AlmoxarifadoUpdateView = new View.AlmoxarifadoUpdate(almoxarifado);
-                // if(AlmoxarifadoUpdateView.ShowDialog() == DialogResult.OK)
-                // {
-                //     RefreshList();
-                //     MessageBox.Show("almoxarifado editado com sucesso");
-                // }
+                var SaldoUpdateView = new Views.SaldoUpdate(saldo);
+                SaldoUpdateView.Show();
+                if(SaldoUpdateView.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshList();
+                    MessageBox.Show("Saldo editado com sucesso");
+                }
             }
             catch(Exception err)
             {
@@ -58,11 +61,11 @@ namespace Views{
 
         private void btDelete_Click(object sender, EventArgs e){
             try{
-                AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Delete);
-                DialogResult result = MessageBox.Show("Deseja mesmo deletar esse almoxarifado?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                SaldoModels saldo = GetSelectedSaldo(Option.Delete);
+                DialogResult result = MessageBox.Show("Deseja mesmo deletar esse Saldo?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    Controllers.AlmoxarifadoController.Delete(almoxarifado);
+                    Controllers.SaldoController.Delete(saldo);
                     RefreshList();
                 }
             }
@@ -79,16 +82,16 @@ namespace Views{
             }
         }
         
-        public AlmoxarifadoModels GetSelectedAlmoxarifado(Option option)
+        public SaldoModels GetSelectedSaldo(Option option)
         {
-            if(listAlmoxarifado.SelectedItems.Count > 0)
+            if(listSaldo.SelectedItems.Count > 0)
             {
-                int selectedAlmoxarifadoId = int.Parse(listAlmoxarifado.SelectedItems[0].Text);
-                return Controllers.AlmoxarifadoController.ReadById(selectedAlmoxarifadoId);
+                int selectedSaldoId = int.Parse(listSaldo.SelectedItems[0].Text);
+                return Controllers.SaldoController.ReadById(selectedSaldoId);
             }
             else{
 
-                throw new Exception($"Selecione um almoxarifado para {(option == Option.Update ? "editar" : "deletar")}");
+                throw new Exception($"Selecione um Saldo para {(option == Option.Update ? "editar" : "deletar")}");
             }
         }
 
@@ -97,7 +100,7 @@ namespace Views{
             this.Close();
         }
 
-        public ListAlmoxarifado()
+        public ListSaldo()
         {
             this.Text = "Saldos";
             this.Size = new Size(800, 450);
@@ -108,14 +111,14 @@ namespace Views{
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
 
-            listAlmoxarifado = new ListView();
-            listAlmoxarifado.Size = new Size(680, 260);
-            listAlmoxarifado.Location = new Point(50, 50);
-            listAlmoxarifado.View = View.Details;
-            listAlmoxarifado.Columns.Add("Nome");
-            listAlmoxarifado.Columns.Add("Almoxarifado");
-            listAlmoxarifado.Columns.Add("Quantidade");
-            this.Controls.Add(listAlmoxarifado);
+            listSaldo = new ListView();
+            listSaldo.Size = new Size(680, 260);
+            listSaldo.Location = new Point(50, 50);
+            listSaldo.View = View.Details;
+            listSaldo.Columns.Add("Nome");
+            listSaldo.Columns.Add("Almoxarifado");
+            listSaldo.Columns.Add("Quantidade");
+            this.Controls.Add(listSaldo);
 
             RefreshList();
 
@@ -147,5 +150,6 @@ namespace Views{
             btClose.Click += new EventHandler(btClose_Click);
             this.Controls.Add(btClose);
         }
+        
     }
 }

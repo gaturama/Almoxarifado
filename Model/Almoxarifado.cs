@@ -10,7 +10,7 @@ namespace Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idAlmoxarifado {get; set;}
 
-        [Column("Nome")]
+        [Column("nome")]
         public string nome{get; set;}   
 
         public AlmoxarifadoModels(string nome)

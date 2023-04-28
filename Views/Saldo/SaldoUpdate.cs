@@ -5,10 +5,10 @@ namespace Views{
 
     public class SaldoUpdate : Form{
 
-        public Label lblNome;
-        public TextBox txtNome;
-        public Label lblAlmoxarifado;
-        public TextBox txtAlmoxarifado;
+        public Label lblIdProduto;
+        public TextBox txtIdProduto;
+        public Label lblIdAlmoxarifado;
+        public TextBox txtIdAlmoxarifado;
         public Label lblQtd;
         public TextBox txtQtd;
         public Button btUpdate;
@@ -19,15 +19,15 @@ namespace Views{
         private void btUpdate_Click(object sender, EventArgs e)
         {
             SaldoModels saldoToUpdate = this.saldo;
-            saldoToUpdate.nome = this.txtNome.Text;
-            saldoToUpdate.almoxarifado = this.txtAlmoxarifado.Text;
-            saldoToUpdate.qtd = this.txtQtd.Text;
+            saldoToUpdate.idProduto = Convert.ToInt32(this.txtIdProduto.Text);
+            saldoToUpdate.idAlmoxarifado = Convert.ToInt32(this.txtIdAlmoxarifado.Text);
+            saldoToUpdate.qtd = Convert.ToInt32(this.txtQtd.Text);
 
             if
             (
-                saldoToUpdate.nome == "" ||
-                saldoToUpdate.almoxarifado == "" ||
-                saldoToUpdate.qtd == ""
+                saldoToUpdate.idProduto.ToString() == "" ||
+                saldoToUpdate.idAlmoxarifado.ToString() == "" ||
+                saldoToUpdate.qtd.ToString() == ""
             )
                 {
                     MessageBox.Show("Preencha corretamente os campos");
@@ -59,29 +59,29 @@ namespace Views{
             this.MinimizeBox = false;
             this.ShowIcon = false;
 
-            this.lblNome = new Label();
-            this.lblNome.Text = "Nome";
-            this.lblNome.Location = new Point(10, 40);
-            this.lblNome.Size = new Size(50, 20);
-            this.Controls.Add(this.lblNome);
+            this.lblIdProduto = new Label();
+            this.lblIdProduto.Text = "Id do Produto";
+            this.lblIdProduto.Location = new Point(10, 40);
+            this.lblIdProduto.Size = new Size(50, 20);
+            this.Controls.Add(this.lblIdProduto);
 
-            this.txtNome = new TextBox();
-            this.txtNome.Text = saldo.nome;
-            this.txtNome.Location = new System.Drawing.Point(80, 40);
-            this.txtNome.Size = new System.Drawing.Size(150, 20);
-            this.Controls.Add(this.txtNome);
+            this.txtIdProduto = new TextBox();
+            this.txtIdProduto.Text = saldo.idProduto.ToString();
+            this.txtIdProduto.Location = new System.Drawing.Point(80, 40);
+            this.txtIdProduto.Size = new System.Drawing.Size(150, 20);
+            this.Controls.Add(this.txtIdProduto);
 
-            this.lblAlmoxarifado = new Label();
-            this.lblAlmoxarifado.Text = "Almoxarifado";
-            this.lblAlmoxarifado.Location = new Point(10, 70);
-            this.lblAlmoxarifado.Size = new Size(50, 20);
-            this.Controls.Add(this.lblAlmoxarifado);
+            this.lblIdAlmoxarifado = new Label();
+            this.lblIdAlmoxarifado.Text = "Almoxarifado";
+            this.lblIdAlmoxarifado.Location = new Point(10, 70);
+            this.lblIdAlmoxarifado.Size = new Size(50, 20);
+            this.Controls.Add(this.lblIdAlmoxarifado);
 
-            this.txtAlmoxarifado = new TextBox();
-            this.txtAlmoxarifado.Text = saldo.almoxarifado;
-            this.txtAlmoxarifado.Location = new System.Drawing.Point(80, 70);
-            this.txtAlmoxarifado.Size = new System.Drawing.Size(150, 20);
-            this.Controls.Add(this.txtAlmoxarifado);
+            this.txtIdAlmoxarifado = new TextBox();
+            this.txtIdAlmoxarifado.Text = saldo.idAlmoxarifado.ToString();
+            this.txtIdAlmoxarifado.Location = new System.Drawing.Point(80, 70);
+            this.txtIdAlmoxarifado.Size = new System.Drawing.Size(150, 20);
+            this.Controls.Add(this.txtIdAlmoxarifado);
 
             this.lblQtd = new Label();
             this.lblQtd.Text = "Quantidade";
@@ -90,7 +90,7 @@ namespace Views{
             this.Controls.Add(this.lblQtd);
 
             this.txtQtd = new TextBox();
-            this.txtQtd.Text = saldo.qtd;
+            this.txtQtd.Text = saldo.qtd.ToString();
             this.txtQtd.Location = new System.Drawing.Point(80, 100);
             this.txtQtd.Size = new System.Drawing.Size(150, 20);
             this.Controls.Add(this.txtQtd);

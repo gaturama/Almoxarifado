@@ -2,55 +2,51 @@ using Models;
 using Controllers;
 
 namespace Views{
+    public class ListProduto : Form{
 
-    public enum Op {Update, Delete}
+        ListView listProduto;
 
-    public class ListSaldo : Form{
-
-        ListView listSaldo;
-
-        private void AddListView(Models.SaldoModels saldo){
+        private void AddListView(Models.ProdutoModels produto){
 
             string[]row = {
 
-                saldo.nome,
-                saldo.almoxarifado,
-                saldo.qtd
+                produto.nome,
+                produto.preco
             };
 
             ListViewItem item = new ListViewItem(row);
-            listSaldo.Items.Add(item);
+            listProduto.Items.Add(item);
         }
 
         public void RefreshList()
         {
-            listSaldo.Items.Clear();
+            listProduto.Items.Clear();
 
-            List<Models.SaldoModels> list = Controllers.SaldoController.Read();
+            List<Models.ProdutoModels> list = Controllers.ProdutoController.Read();
 
-            foreach (Models.SaldoModels saldo in list)
+            foreach (Models.ProdutoModels produto in list)
             {
-                AddListView(saldo);
+                AddListView(produto);
             }
         }
 
         private void btCadt_Click(object sender, EventArgs e){
 
-            var SaldoCreate = new Views.SaldoCreate();
-            SaldoCreate.Show();
+                var ProdutoCreate = new Views.ProdutoCreate();
+                ProdutoCreate.Show();
         }
 
         private void btUpdate_Click(object sender, EventArgs e){
             try{
 
-                SaldoModels saldo = GetSelectedSaldo(Option.Update);
+                ProdutoModels produto = GetSelectedProduto(Option.Update);
                 RefreshList();
-                //var SaldoUpdateView = new View.SaldoUpdate(saldo);
-                // if(SaldoUpdateView.ShowDialog() == DialogResult.OK)
-                // {
-                //     RefreshList();
-                //     MessageBox.Show("Saldo editado com sucesso");
-                // }
+                var ProdutoUpdateView = new Views.ProdutoUpdate(produto);
+                if(ProdutoUpdateView.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshList();
+                    MessageBox.Show("Produto editado com sucesso");
+                }
             }
             catch(Exception err)
             {
@@ -60,11 +56,11 @@ namespace Views{
 
         private void btDelete_Click(object sender, EventArgs e){
             try{
-                SaldoModels saldo = GetSelectedSaldo(Option.Delete);
-                DialogResult result = MessageBox.Show("Deseja mesmo deletar esse Saldo?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                ProdutoModels produto = GetSelectedProduto(Option.Delete);
+                DialogResult result = MessageBox.Show("Deseja mesmo deletar esse Produto?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    Controllers.SaldoController.Delete(saldo);
+                    Controllers.ProdutoController.Delete(produto);
                     RefreshList();
                 }
             }
@@ -80,28 +76,27 @@ namespace Views{
                 }
             }
         }
-        
-        public SaldoModels GetSelectedSaldo(Option option)
+
+        public ProdutoModels GetSelectedProduto(Option option)
         {
-            if(listSaldo.SelectedItems.Count > 0)
+            if(listProduto.SelectedItems.Count > 0)
             {
-                int selectedSaldoId = int.Parse(listSaldo.SelectedItems[0].Text);
-                return Controllers.SaldoController.ReadById(selectedSaldoId);
+                int selectedProdutoId = int.Parse(listProduto.SelectedItems[0].Text);
+                return Controllers.ProdutoController.ReadById(selectedProdutoId);
             }
             else{
 
-                throw new Exception($"Selecione um Saldo para {(option == Option.Update ? "editar" : "deletar")}");
+                throw new Exception($"Selecione um Produto para {(option == Option.Update ? "editar" : "deletar")}");
             }
         }
 
-        private void btClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
+        private void btClose_Click(object sender, EventArgs e){
+            Close();
         }
 
-        public ListSaldo()
+        public ListProduto()
         {
-            this.Text = "Saldos";
+            this.Text = "Produtos";
             this.Size = new Size(800, 450);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -110,14 +105,13 @@ namespace Views{
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
 
-            listSaldo = new ListView();
-            listSaldo.Size = new Size(680, 260);
-            listSaldo.Location = new Point(50, 50);
-            listSaldo.View = View.Details;
-            listSaldo.Columns.Add("Nome");
-            listSaldo.Columns.Add("Almoxarifado");
-            listSaldo.Columns.Add("Quantidade");
-            this.Controls.Add(listSaldo);
+            listProduto = new ListView();
+            listProduto.Size = new Size(680, 260);
+            listProduto.Location = new Point(50 ,50);
+            listProduto.View = View.Details;
+            listProduto.Columns.Add("Nome");
+            listProduto.Columns.Add("Preço");
+            this.Controls.Add(listProduto);
 
             RefreshList();
 
@@ -149,6 +143,5 @@ namespace Views{
             btClose.Click += new EventHandler(btClose_Click);
             this.Controls.Add(btClose);
         }
-        
     }
 }

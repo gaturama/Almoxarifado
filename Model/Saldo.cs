@@ -9,20 +9,20 @@ namespace Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idSaldo { get; set; }
 
-        [Column("Nome")]
+        [Column("idProduto")]
 
-        public string nome { get; set; }
+        public int idProduto  { get; set; }
 
-        [Column("Almoxarifado")]
-        public string almoxarifado{ get; set; }
+        [Column("idAlmoxarifado")]
+        public int idAlmoxarifado{ get; set; }
 
-        [Column("Quantidade")]
-        public string qtd { get; set; }
+        [Column("quantidade")]
+        public int qtd { get; set; }
 
-        public SaldoModels(string nome, string almoxarifado, string qtd)
+        public SaldoModels(int idProduto, int idAlmoxarifado, int qtd)
         {
-            this.nome = nome;
-            this.almoxarifado = almoxarifado;
+            this.idProduto = idProduto;
+            this.idAlmoxarifado = idAlmoxarifado;
             this.qtd = qtd;
         }
     }

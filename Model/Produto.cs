@@ -9,11 +9,11 @@ namespace Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idProduto {get; set;}
 
-        [Column("Nome")]
+        [Column("nome")]
 
         public string nome{get; set;}
 
-        [Column("Preço")]
+        [Column("preco")]
         public string preco{get; set;}
 
         public ProdutoModels(string nome, string preco)
