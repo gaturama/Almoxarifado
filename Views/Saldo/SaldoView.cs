@@ -12,7 +12,7 @@ namespace Views{
         private void AddListView(Models.SaldoModels saldo){
 
             string[]row = {
-
+                saldo.idSaldo.ToString(),
                 saldo.idProduto.ToString(),
                 saldo.idAlmoxarifado.ToString(),
                 saldo.qtd.ToString()
@@ -46,7 +46,6 @@ namespace Views{
                 SaldoModels saldo = GetSelectedSaldo(Option.Update);
                 RefreshList();
                 var SaldoUpdateView = new Views.SaldoUpdate(saldo);
-                SaldoUpdateView.Show();
                 if(SaldoUpdateView.ShowDialog() == DialogResult.OK)
                 {
                     RefreshList();
@@ -115,8 +114,8 @@ namespace Views{
             listSaldo.Size = new Size(680, 260);
             listSaldo.Location = new Point(50, 50);
             listSaldo.View = View.Details;
-            listSaldo.Columns.Add("Nome");
-            listSaldo.Columns.Add("Almoxarifado");
+            listSaldo.Columns.Add("Id Nome");
+            listSaldo.Columns.Add("Id Almoxarifado");
             listSaldo.Columns.Add("Quantidade");
             listSaldo.FullRowSelect = true;
             this.Controls.Add(listSaldo);

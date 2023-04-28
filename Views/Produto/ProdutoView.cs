@@ -90,7 +90,8 @@ namespace Views{
             }
         }
 
-        private void btClose_Click(object sender, EventArgs e){
+        private void btClose_Click(object sender, EventArgs e)
+        {
             Close();
         }
 

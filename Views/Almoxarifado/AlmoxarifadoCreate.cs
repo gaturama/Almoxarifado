@@ -12,7 +12,6 @@ namespace Views{
         public void btCadt_Click(object sender, EventArgs e)
         {
             if(
-
                 txtNome.Text == ""
             ){
                 MessageBox.Show("Preencha o campo corretamente");

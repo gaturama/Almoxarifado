@@ -29,7 +29,7 @@ namespace Views{
                     Convert.ToInt32(txtIdAlmoxarifado.Text),
                     Convert.ToInt32(txtQtd.Text)
                 );
-
+                
                 SaldoController saldoController = new SaldoController();
                 Controllers.SaldoController.Create(saldo);
 
@@ -64,7 +64,7 @@ namespace Views{
             this.Size = new System.Drawing.Size(280, 360);
 
             this.lblIdProduto = new Label();
-            this.lblIdProduto.Text = "Id do Produto";
+            this.lblIdProduto.Text = "IdProduto";
             this.lblIdProduto.Location = new Point(10, 40);
             this.lblIdProduto.Size = new Size(50, 20);
 
@@ -73,7 +73,7 @@ namespace Views{
             this.txtIdProduto.Size = new Size(150, 20);
 
             this.lblIdAlmoxarifado = new Label();
-            this.lblIdAlmoxarifado.Text = "Id do Almoxarifado";
+            this.lblIdAlmoxarifado.Text = "IdAlmoxarifado";
             this.lblIdAlmoxarifado.Location = new Point(10, 70);
             this.lblIdAlmoxarifado.Size = new Size(50, 20);
 
