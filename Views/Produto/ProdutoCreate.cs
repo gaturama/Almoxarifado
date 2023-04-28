@@ -23,11 +23,10 @@ namespace Views{
             {
                 Models.ProdutoModels produto = new ProdutoModels(
                     txtNome.Text,
-                    txtPreco.Text
+                    Convert.ToDouble(txtPreco.Text)
                 );
 
-                ProdutoController produtoController = new ProdutoController();
-                //produtoController.Create(produto);
+                Controllers.ProdutoController.Create(produto);
 
                 MessageBox.Show("Produto cadastrado com sucesso");
                 ClearForm();
@@ -80,6 +79,7 @@ namespace Views{
             this.btCadt.Text = "Cadastrar";
             this.btCadt.Location = new Point(10, 130);
             this.btCadt.Size = new Size(50, 20);
+            this.btCadt.Click += btCadt_Click;
 
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.txtNome);

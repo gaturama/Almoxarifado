@@ -11,7 +11,7 @@ namespace Views{
             string[]row = {
 
                 produto.nome,
-                produto.preco
+                produto.preco.ToString()
             };
 
             ListViewItem item = new ListViewItem(row);
@@ -111,6 +111,7 @@ namespace Views{
             listProduto.View = View.Details;
             listProduto.Columns.Add("Nome");
             listProduto.Columns.Add("Preço");
+            listProduto.FullRowSelect = true;
             this.Controls.Add(listProduto);
 
             RefreshList();

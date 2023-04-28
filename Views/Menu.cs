@@ -21,7 +21,7 @@ namespace Views
             btPrt.Click += (sender, e) => {
                 menu.Hide();
                 var listProduto = new ListProduto();
-                menu.Show();
+                listProduto.ShowDialog();
             };
 
             Button btAlm = new Button();
@@ -42,7 +42,7 @@ namespace Views
             btSd.Click += (sender, e) => {
                 menu.Hide();
                 var listSaldo = new ListSaldo();
-                menu.Show();
+                listSaldo.ShowDialog();
             };
 
             Button sair = new Button();

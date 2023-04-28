@@ -112,6 +112,7 @@ namespace Views{
             listAlmoxarifado.Columns.Add("Nome");
             listAlmoxarifado.Columns.Add("Almoxarifado");
             listAlmoxarifado.Columns.Add("Quantidade");
+            listAlmoxarifado.FullRowSelect = true;
             this.Controls.Add(listAlmoxarifado);
 
             RefreshList();

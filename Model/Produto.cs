@@ -14,9 +14,9 @@ namespace Models
         public string nome{get; set;}
 
         [Column("preco")]
-        public string preco{get; set;}
+        public double preco{get; set;}
 
-        public ProdutoModels(string nome, string preco)
+        public ProdutoModels(string nome, double preco)
         {
             this.nome = nome;
             this.preco = preco;

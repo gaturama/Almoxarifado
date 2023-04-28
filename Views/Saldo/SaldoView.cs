@@ -118,6 +118,7 @@ namespace Views{
             listSaldo.Columns.Add("Nome");
             listSaldo.Columns.Add("Almoxarifado");
             listSaldo.Columns.Add("Quantidade");
+            listSaldo.FullRowSelect = true;
             this.Controls.Add(listSaldo);
 
             RefreshList();

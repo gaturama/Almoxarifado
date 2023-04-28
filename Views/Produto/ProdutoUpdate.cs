@@ -17,12 +17,12 @@ namespace Views{
         {
                 ProdutoModels produtoToUpdate = this.produto;
                 produtoToUpdate.nome = this.txtNome.Text;
-                produtoToUpdate.preco = this.txtPreco.Text;
+                produtoToUpdate.preco = Convert.ToDouble(this.txtPreco.Text);
 
                 if
                 (
                     produtoToUpdate.nome == "" ||
-                    produtoToUpdate.preco == "" 
+                    produtoToUpdate.preco == 0 
                 )
                 {
                     MessageBox.Show("Preencha corretamente os campos");
@@ -30,7 +30,7 @@ namespace Views{
                 }
                 else
                 {
-                    ProdutoController.Update(produtoToUpdate);
+                    Controllers.ProdutoController.Update(produtoToUpdate);
                     MessageBox.Show("Saldo foi editado com sucesso");
                 }
 
@@ -46,7 +46,7 @@ namespace Views{
         {
             this.produto = produto;
 
-             this.Text = "Editar produto";
+            this.Text = "Editar produto";
             this.Size = new System.Drawing.Size(280, 360);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -73,7 +73,7 @@ namespace Views{
             this.Controls.Add(this.lblPreco);
 
             this.txtPreco = new TextBox();
-            this.txtPreco.Text = produto.preco;
+            this.txtPreco.Text = produto.preco.ToString();
             this.txtPreco.Location = new System.Drawing.Point(80, 70);
             this.txtPreco.Size = new System.Drawing.Size(150, 20);
             this.Controls.Add(this.txtPreco);

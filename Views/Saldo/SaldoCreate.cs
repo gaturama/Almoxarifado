@@ -31,7 +31,7 @@ namespace Views{
                 );
 
                 SaldoController saldoController = new SaldoController();
-                //saldoController.Create(saldo);
+                Controllers.SaldoController.Create(saldo);
 
                 MessageBox.Show("Saldo cadastrado com sucesso");
                 ClearForm();
@@ -64,7 +64,7 @@ namespace Views{
             this.Size = new System.Drawing.Size(280, 360);
 
             this.lblIdProduto = new Label();
-            this.lblIdProduto.Text = "Nome";
+            this.lblIdProduto.Text = "Id do Produto";
             this.lblIdProduto.Location = new Point(10, 40);
             this.lblIdProduto.Size = new Size(50, 20);
 
@@ -73,7 +73,7 @@ namespace Views{
             this.txtIdProduto.Size = new Size(150, 20);
 
             this.lblIdAlmoxarifado = new Label();
-            this.lblIdAlmoxarifado.Text = "Almoxarifado";
+            this.lblIdAlmoxarifado.Text = "Id do Almoxarifado";
             this.lblIdAlmoxarifado.Location = new Point(10, 70);
             this.lblIdAlmoxarifado.Size = new Size(50, 20);
 
@@ -94,6 +94,7 @@ namespace Views{
             this.btCadt.Text = "Cadastrar";
             this.btCadt.Location = new Point(10, 130);
             this.btCadt.Size = new Size(50, 20);
+            this.btCadt.Click += btCadt_Click;
 
             this.Controls.Add(this.lblIdProduto);
             this.Controls.Add(this.txtIdProduto);
