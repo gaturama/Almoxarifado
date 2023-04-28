@@ -19,21 +19,8 @@ namespace Views{
                 produtoToUpdate.nome = this.txtNome.Text;
                 produtoToUpdate.preco = Convert.ToDouble(this.txtPreco.Text);
 
-                if
-                (
-                    produtoToUpdate.nome == "" ||
-                    produtoToUpdate.preco == 0 
-                )
-                {
-                    MessageBox.Show("Preencha corretamente os campos");
-                    return;
-                }
-                else
-                {
-                    Controllers.ProdutoController.Update(produtoToUpdate);
-                    MessageBox.Show("Saldo foi editado com sucesso");
-                }
-
+                Controllers.ProdutoController.Update(produtoToUpdate);
+                
                 ListProduto ProdutoList = Application.OpenForms.OfType<ListProduto>().FirstOrDefault();
                 if (ProdutoList!= null)
                 {

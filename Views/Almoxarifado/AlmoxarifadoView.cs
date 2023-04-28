@@ -9,7 +9,7 @@ namespace Views{
         private void AddListView(Models.AlmoxarifadoModels almoxarifado){
 
             string[]row = {
-
+                almoxarifado.idAlmoxarifado.ToString(),
                 almoxarifado.nome
             };
 
@@ -109,9 +109,8 @@ namespace Views{
             listAlmoxarifado.Size = new Size(680, 260);
             listAlmoxarifado.Location = new Point(50, 50);
             listAlmoxarifado.View = View.Details;
+            listAlmoxarifado.Columns.Add("Id");
             listAlmoxarifado.Columns.Add("Nome");
-            listAlmoxarifado.Columns.Add("Almoxarifado");
-            listAlmoxarifado.Columns.Add("Quantidade");
             listAlmoxarifado.FullRowSelect = true;
             this.Controls.Add(listAlmoxarifado);
 

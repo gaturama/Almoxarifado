@@ -9,7 +9,7 @@ namespace Views{
         private void AddListView(Models.ProdutoModels produto){
 
             string[]row = {
-
+                produto.idProduto.ToString(),
                 produto.nome,
                 produto.preco.ToString()
             };
@@ -109,6 +109,7 @@ namespace Views{
             listProduto.Size = new Size(680, 260);
             listProduto.Location = new Point(50 ,50);
             listProduto.View = View.Details;
+            listProduto.Columns.Add("Id");
             listProduto.Columns.Add("Nome");
             listProduto.Columns.Add("Preço");
             listProduto.FullRowSelect = true;
