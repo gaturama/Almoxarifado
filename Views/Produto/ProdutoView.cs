@@ -92,7 +92,7 @@ namespace Views{
 
         private void btClose_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         public ListProduto()
@@ -140,7 +140,7 @@ namespace Views{
             this.Controls.Add(btDelete);
 
             Button btClose = new Button();
-            btClose.Text = "Fechar";
+            btClose.Text = "Voltar";
             btClose.Size = new Size(100, 30);
             btClose.Location = new Point(450, 330);
             btClose.Click += new EventHandler(btClose_Click);
